@@ -1,0 +1,28 @@
+.header {
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 91px 12px 28px;
+    color: #fff;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .25);
+}
+
+.header__logo {
+    width: clamp(127px,12.4vw, 178px);
+    height: auto;
+}
+
+.header__nav {
+    width: 70%;
+}
+
+.header__nav-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__nav-item a {
+    font-size: clamp(1rem, 1.2vw, 1.5rem);
+    text-transform: capitalize;
+}
