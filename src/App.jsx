@@ -1,13 +1,14 @@
-import Header from "./layout/Header.jsx";
 import "./assets/styles/App.css";
+import MainLayout from "./layout/MainLayout/MainLayout.jsx";
+import HomePage from "./pages/HomePage/HomePage.jsx";
 
 function App() {
 
     return (
-        <div className="app-container">
-            <Header />
-        </div>
+        <MainLayout>
+            <HomePage />
+        </MainLayout>
     );
-};
+}
 
 export default App

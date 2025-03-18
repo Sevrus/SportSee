@@ -1,0 +1,25 @@
+.content-title {
+    font-size: 2.5rem;
+    color: #000;
+    margin-bottom: 30px;
+}
+
+.content-title__span {
+    color: #ff0101;
+}
+
+.content-subtitle {
+    color: #000;
+    font-weight: 400;
+}
+
+@media screen and (min-width: 1440px) {
+    .content-title {
+        font-size: 3rem;
+        margin-bottom: 40px;
+    }
+
+    .content-subtitle {
+        font-size: 1.125rem;
+    }
+}

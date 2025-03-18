@@ -1,10 +1,10 @@
-import "../assets/styles/layout/header.css"
-import logo from "../assets/images/logo_sportsee.svg";
+import "./Header.css"
+import logo from "../../assets/images/logo_sportsee.svg";
 
 const Header = () => {
     return (
         <header className="header">
-            <a href="/" className="header__logo-link">
+            <a href="/public" className="header__logo-link">
                 <img className="header__logo" src={logo} alt="Le logo de SportSee" />
             </a>
 

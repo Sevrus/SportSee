@@ -1,0 +1,21 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main-layout {
+    display: flex;
+    flex: 1;
+}
+
+.content {
+    flex: 1;
+    padding: 58px 80px 76px 97px;
+}
+
+@media screen and (min-width: 1440px) {
+    .content {
+        padding: 68px 90px 86px 107px;
+    }
+}
