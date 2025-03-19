@@ -1,0 +1,44 @@
+.bar-chart-activity {
+    width: 835px;
+    height: 320px;
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    padding: 23px 30px;
+}
+
+.legend-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 47px;
+}
+
+.legend-container h3 {
+    font-size: 0.937rem;
+    color: #20253a;
+}
+
+.custom-legend {
+    display: flex;
+    gap: 32px;
+}
+
+.custom-legend p {
+    font-size: 0.875rem;
+    color: #74798c;
+}
+
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.dot--black {
+    background-color: #282d30;
+}
+
+.dot--red {
+    background-color: #e60000;
+}

@@ -2,7 +2,7 @@ const useMockData = true;
 
 const fetchUserData = async (endpoint, userId) => {
     if (useMockData) {
-        const mockData = await import("public/mocks/mockUserStats.json");
+        const mockData = await import("../mocks/mockUserStats.json");
         switch (endpoint) {
             case 'USER_MAIN_DATA':
                 return mockData.USER_MAIN_DATA.find(user => user["id"] === userId);
