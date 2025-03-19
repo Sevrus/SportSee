@@ -1,4 +1,4 @@
-import {Bar, BarChart, CartesianGrid, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import {Bar, BarChart, CartesianGrid,  ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import "./BarChartActivity.css";
 
 const BarChartActivity = ({data}) => {
