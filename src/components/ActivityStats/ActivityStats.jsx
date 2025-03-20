@@ -5,17 +5,24 @@ import NutritionalInfo from "../NutritionalInfo/NutritionalInfo.jsx";
 
 const ActivityStats = ({userId}) => {
     const [dailyActivity, setDailyActivity] = useState(null);
-    const [nutritionalInfo, setNutritionalInfo] = useState(null);
+    const [performanceData, setPerformanceData] = useState(null);
+    const [averageSessions, setAverageSessions] = useState(null);
+    const [userScore, setUserScore] = useState(null);
 
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const [activityData, performanceData] = await Promise.all([
+                const [
+                    activityData,
+                    performanceData,
+                    averageSessionsData,
+                    userData
+                ] = await Promise.all([
                     fetchUserData('USER_ACTIVITY', userId),
                     fetchUserData('USER_PERFORMANCE', userId),
+                    fetchUserData('USER_AVERAGE_SESSIONS', userId),
+                    fetchUserData('USER_MAIN_DATA', userId)
                 ]);
-
-                console.log("Données brutes USER_ACTIVITY :", activityData);
 
                 const formattedActivityData = {
                     ...activityData,
@@ -25,10 +32,27 @@ const ActivityStats = ({userId}) => {
                         calories: session.calories
                     }))
                 };
-                console.log("Données formatées :", formattedActivityData);
+
+                const formattedAverageSessions = {
+                    ...averageSessionsData,
+                    sessions: averageSessionsData["sessions"].map((session) => ({
+                        day: session["day"],
+                        sessionLength: session["sessionLength"],
+                    })),
+                };
+
+                const formattedPerformanceData = performanceData["data"].map((item) => ({
+                        value: item["value"],
+                        kind: item["kind"]
+                    }));
+
+                const userFormattedScore =
+                    userData["todayScore"] || userData["score"] || 0;
 
                 setDailyActivity(formattedActivityData);
-                setNutritionalInfo(performanceData);
+                setPerformanceData(formattedPerformanceData);
+                setAverageSessions(formattedAverageSessions);
+                setUserScore(userFormattedScore);
             } catch (error) {
                 console.error("Erreur lors de la récupération des statistiques :", error);
             }
@@ -39,14 +63,19 @@ const ActivityStats = ({userId}) => {
     return (
         <div className="activity-stats">
             <div className="activity-stats__left">
-                {dailyActivity
-                    ? <DailyActivity data={dailyActivity} />
+                {dailyActivity && averageSessions && userScore && performanceData
+                    ? <DailyActivity
+                        data={dailyActivity}
+                        averageSessions={averageSessions}
+                        userScore={userScore}
+                        performanceData={performanceData}
+                    />
                     : <p>Chargement des activités...</p>
                 }
             </div>
             <div className="activity-stats__right">
-                {nutritionalInfo
-                    ? <NutritionalInfo data={nutritionalInfo} />
+                {dailyActivity
+                    ? <NutritionalInfo data={dailyActivity} />
                     : <p>Chargement des infos nutritionnelles...</p>
                 }
             </div>
