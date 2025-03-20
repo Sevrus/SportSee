@@ -1,4 +1,4 @@
-import {Bar, BarChart, CartesianGrid,  ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import {Bar, BarChart, CartesianGrid, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import "./BarChartActivity.css";
 
 const BarChartActivity = ({data}) => {
@@ -45,6 +45,13 @@ const BarChartActivity = ({data}) => {
         );
     };
 
+    const weights = sessions.map(session => session.kilogram);
+    const minWeight = Math.min(...weights);
+    const maxWeight = Math.max(...weights);
+
+    const midWeight = (minWeight + maxWeight) / 2;
+    const maxWeightLine = maxWeight;
+
     const renderLegend = () => {
         return (
             <div className="custom-legend">
@@ -70,8 +77,25 @@ const BarChartActivity = ({data}) => {
             <ResponsiveContainer width="100%" height={185}>
                 <BarChart data={sessions} barcategoryGap={"8px"}>
                     <CartesianGrid
-                        strokeDasharray={"3 3"}
                         vertical={false}
+                        horizontal={false}
+                    />
+                    <ReferenceLine
+                        y={minWeight - 2}
+                        strokeDasharray={""}
+                        yAxisId="left"
+                        stroke={"#dedede"}
+                    />
+                    <ReferenceLine
+                        y={midWeight + 0.5}
+                        strokeDasharray="3 3"
+                        yAxisId={"left"}
+                        stroke={"#dedede"}
+                    />
+                    <ReferenceLine
+                        y={maxWeightLine + 3}
+                        strokeDasharray="3 3"
+                        yAxisId={"left"}
                         stroke={"#dedede"}
                     />
                     <XAxis
@@ -84,8 +108,8 @@ const BarChartActivity = ({data}) => {
                     <YAxis
                         yAxisId="left"
                         orientation="right"
-                        domain={[65, 85]}
-                        tickCount={3}
+                        domain={[minWeight - 2, maxWeight + 3]}
+                        ticks={[minWeight - 2, midWeight + 0.5, maxWeight + 3]}
                         axisLine={false}
                         tickLine={false}
                         tick={{fontSize: "0.875rem", fill: "#9B9EAC"}}
