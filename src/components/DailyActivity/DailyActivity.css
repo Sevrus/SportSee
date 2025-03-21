@@ -1,3 +1,6 @@
 .daily-activity {
     width: 835px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }

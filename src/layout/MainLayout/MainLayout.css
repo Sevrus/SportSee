@@ -11,11 +11,11 @@
 
 .content {
     flex: 1;
-    padding: 58px 80px 76px 97px;
+    padding: 58px 80px 0 97px;
 }
 
 @media screen and (min-width: 1440px) {
     .content {
-        padding: 68px 90px 86px 107px;
+        padding: 68px 90px 0 107px;
     }
 }

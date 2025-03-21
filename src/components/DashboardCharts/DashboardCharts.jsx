@@ -1,6 +1,6 @@
 import AverageSessionChart from "../AverageSessionChart/AverageSessionChart.jsx";
 import PerformanceRadarChart from "../PerformanceRadarChart/PerformanceRadarChart.jsx";
-import RadialBarChart from "../RadialBarChart/RadialBarChart.jsx";
+import RadialBarScore from "../RadialBarChart/RadialBarScore.jsx";
 import "./DashboardCharts.css";
 
 const DashboardCharts = ({averageSessions, performanceData, userScore}) => {
@@ -9,7 +9,7 @@ const DashboardCharts = ({averageSessions, performanceData, userScore}) => {
      <div className={"dashboard-charts"}>
          <AverageSessionChart data={averageSessions} />
          <PerformanceRadarChart data={performanceData} />
-         <RadialBarChart data={userScore} />
+         <RadialBarScore data={userScore} />
      </div>
  );
 }

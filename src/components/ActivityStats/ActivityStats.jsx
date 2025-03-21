@@ -2,12 +2,15 @@ import {useEffect, useState} from "react";
 import fetchUserData from "../../services/fetchUserData.js";
 import DailyActivity from "../DailyActivity/DailyActivity.jsx";
 import NutritionalInfo from "../NutritionalInfo/NutritionalInfo.jsx";
+import "./ActivityStats.css";
 
 const ActivityStats = ({userId}) => {
     const [dailyActivity, setDailyActivity] = useState(null);
     const [performanceData, setPerformanceData] = useState(null);
     const [averageSessions, setAverageSessions] = useState(null);
     const [userScore, setUserScore] = useState(null);
+    const [keyData, setKeyData] = useState(null);
+
 
     useEffect(() => {
         const fetchStats = async () => {
@@ -46,6 +49,8 @@ const ActivityStats = ({userId}) => {
                         kind: item["kind"]
                     }));
 
+                const { keyData } = userData;
+
                 const userFormattedScore =
                     userData["todayScore"] || userData["score"] || 0;
 
@@ -53,6 +58,7 @@ const ActivityStats = ({userId}) => {
                 setPerformanceData(formattedPerformanceData);
                 setAverageSessions(formattedAverageSessions);
                 setUserScore(userFormattedScore);
+                setKeyData(keyData);
             } catch (error) {
                 console.error("Erreur lors de la récupération des statistiques :", error);
             }
@@ -75,7 +81,7 @@ const ActivityStats = ({userId}) => {
             </div>
             <div className="activity-stats__right">
                 {dailyActivity
-                    ? <NutritionalInfo data={dailyActivity} />
+                    ? <NutritionalInfo data={keyData} />
                     : <p>Chargement des infos nutritionnelles...</p>
                 }
             </div>
