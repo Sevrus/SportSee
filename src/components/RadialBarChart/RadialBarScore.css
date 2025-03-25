@@ -1,0 +1,15 @@
+.radial-bar-score {
+    position: relative;
+    width: 31%;
+    height: 263px;
+    background-color: #fbfbfb;
+    border-radius: 5px;
+}
+
+.radial-bar-score__title {
+    position: absolute;
+    top: 24px;
+    left: 30px;
+    font-size: 0.93rem;
+    color: #20253a;
+}

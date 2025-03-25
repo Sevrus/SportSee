@@ -1,4 +1,5 @@
 import {ResponsiveContainer, RadialBarChart, PolarAngleAxis, RadialBar} from "recharts";
+import "./RadialBarScore.css";
 
 const RadialBarScore = ({data}) => {
     console.log("Données reçues par RadialBarScore: ", data);
@@ -6,23 +7,16 @@ const RadialBarScore = ({data}) => {
     const chartData = [{name: "Score", value: score}];
 
     return (
-        <div style={{
-            position: "relative",
-            width: "31%",
-            height: "263px",
-            backgroundColor: "#fbfbfb",
-            borderRadius: "5px"
-        }}
-        >
-            <div style={{position:"absolute", top: "24px", left: "30px", fontSize: "0.93rem", color: "#20253a"}}>
+        <div className="radial-bar-score">
+            <div className="radial-bar-score__title">
                 Score
             </div>
             <ResponsiveContainer width="100%" height="100%">
                 <RadialBarChart
                     cx="50%"
                     cy="50%"
-                    innerRadius="70%"
-                    outerRadius="80%"
+                    innerRadius="60%"
+                    outerRadius="70%"
                     data={chartData}
                     startAngle={90}
                     endAngle={450}
