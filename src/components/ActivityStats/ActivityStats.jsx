@@ -45,11 +45,11 @@ const ActivityStats = ({userId}) => {
                 };
 
                 const formattedPerformanceData = performanceData["data"].map((item) => ({
-                        value: item["value"],
-                        kind: item["kind"]
-                    }));
+                    value: item["value"],
+                    kind: item["kind"]
+                }));
 
-                const { keyData } = userData;
+                const {keyData} = userData;
 
                 const userFormattedScore =
                     userData["todayScore"] || userData["score"] || 0;
@@ -79,12 +79,12 @@ const ActivityStats = ({userId}) => {
                     : <p>Chargement des activités...</p>
                 }
             </div>
-            <div className="activity-stats__right">
-                {dailyActivity
-                    ? <NutritionalInfo data={keyData} />
-                    : <p>Chargement des infos nutritionnelles...</p>
-                }
-            </div>
+
+            {dailyActivity
+                ? <NutritionalInfo data={keyData}/>
+                : <p>Chargement des infos nutritionnelles...</p>
+            }
+
         </div>
 
     );

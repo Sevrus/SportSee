@@ -1,3 +1,5 @@
+import "./NutritionalCard.css";
+
 const NutritionalCard = ({icon, label, value, unit}) => {
     return (
         <div className="nutritional-card">

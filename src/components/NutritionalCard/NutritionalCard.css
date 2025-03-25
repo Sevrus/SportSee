@@ -1,0 +1,24 @@
+.nutritional-card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background-color: #fbfbfb;
+    padding: 32px 0 32px 32px;
+    border-radius: 5px;
+}
+
+.nutritional-card__info p:first-child {
+    margin-bottom: 5px;
+}
+
+.nutritional-card__value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #282D30;
+}
+
+.nutritional-card__label {
+    font-size: 0.875rem;
+    color: #74798C;
+}

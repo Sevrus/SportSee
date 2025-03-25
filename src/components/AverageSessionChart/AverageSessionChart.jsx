@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Layer, Line, LineChart, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import {Line, LineChart, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 
 const AverageSessionChart = ({data}) => {
     const [hoverIndex, setHoverIndex] = useState(null);
