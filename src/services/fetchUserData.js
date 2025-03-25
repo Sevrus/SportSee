@@ -1,7 +1,14 @@
 const useMockData = true;
 
 const fetchUserData = async (endpoint, userId) => {
-    if (useMockData) {
+    if (!useMockData) {
+        const URL_BASE = 'https://api.exemple.com/';
+        const response = await fetch(`${URL_BASE}${endpoint}/${userId}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data: ${response.statusText}`);
+        }
+        return response.json();
+    } else {
         const mockData = await import("../mocks/mockUserStats.json");
         switch (endpoint) {
             case 'USER_MAIN_DATA':
@@ -15,13 +22,6 @@ const fetchUserData = async (endpoint, userId) => {
             default:
                 throw new Error('Endpoint not found in mock data.');
         }
-    } else {
-        const URL_BASE = 'https://api.exemple.com/';
-        const response = await fetch(`${URL_BASE}${endpoint}/${userId}`);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch data: ${response.statusText}`);
-        }
-        return response.json();
     }
 };
 
