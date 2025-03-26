@@ -1,11 +1,12 @@
 import {useState} from "react";
-import {Line, LineChart, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import {Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import "./AverageSessionChart.css";
 
 const AverageSessionChart = ({data}) => {
     const [hoverIndex, setHoverIndex] = useState(null);
     const daysMap = ["L", "M", "M", "J", "V", "S", "D"];
-    const sectionWidth = 258 / data.sessions.length;
+    const containerWidth = 250;
+    const sectionWidth = containerWidth / data.sessions.length;
 
     const CustomTooltip = ({active, payload}) => {
         if (active && payload && payload.length) {
@@ -27,13 +28,27 @@ const AverageSessionChart = ({data}) => {
                 <div className="chart-title">
                     Durée moyenne des sessions
                 </div>
+                {hoverIndex !== null && (
+                    <div
+                        className="chart-overlay"
+                        style={{
+                            left: sectionWidth * hoverIndex,
+                            width: containerWidth - sectionWidth * hoverIndex
+                        }}
+                    ></div>
+                )}
                 <div className="line-chart-wrapper">
                     <LineChart
                         width={250}
                         height={200}
                         data={data["sessions"]}
-                        onMouseMove={(e) => setHoverIndex(e.activeTooltipIndex)}
+                        onMouseMove={(e) => {
+                            if (e.activeTooltipIndex) {
+                                setHoverIndex(e.activeTooltipIndex);
+                            }
+                        }}
                         onMouseLeave={() => setHoverIndex(null)}
+                        margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
                     >
                         <defs>
                             <linearGradient id="lineGradient" x1="100%" y1="0%" x2="0%" y2="0%">
@@ -41,15 +56,6 @@ const AverageSessionChart = ({data}) => {
                                 <stop offset="81%" stopColor="rgba(255, 255, 255, 0.4)"/>
                             </linearGradient>
                         </defs>
-                        {hoverIndex !== null && (
-                            <Rectangle
-                                x={sectionWidth * hoverIndex}
-                                y={0}
-                                width={sectionWidth * (data.sessions.length - hoverIndex)}
-                                height={263}
-                                fill="rgba(0, 0, 0, 1)"
-                            />
-                        )}
                         <XAxis
                             dataKey="day"
                             tickLine={false}

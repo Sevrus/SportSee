@@ -12,17 +12,27 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
     height: 100%;
 }
 
-.chart-wrapper {
+.chart-title {
     width: 75%;
     font-size: 0.93rem;
     color: rgba(255, 255, 255, 0.53);
     padding: 29px 0 0 34px;
 }
 
+.chart-overlay{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
 .line-chart-wrapper {
     flex: 1;
     align-self: center;
+    width: 250px;
 }
