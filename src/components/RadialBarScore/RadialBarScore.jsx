@@ -2,7 +2,6 @@ import {ResponsiveContainer, RadialBarChart, PolarAngleAxis, RadialBar} from "re
 import "./RadialBarScore.css";
 
 const RadialBarScore = ({data}) => {
-    console.log("Données reçues par RadialBarScore: ", data);
     const score = data * 100;
     const chartData = [{name: "Score", value: score}];
 

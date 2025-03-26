@@ -3,7 +3,6 @@ import DashboardCharts from "../DashboardCharts/DashboardCharts.jsx";
 import "./DailyActivity.css";
 
 const DailyActivity = ({data, averageSessions, userScore, performanceData}) => {
-    console.log("User score : ", userScore);
 
     return (
         <div className="daily-activity">
