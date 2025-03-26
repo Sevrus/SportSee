@@ -6,7 +6,6 @@ import NutritionalCard from "../NutritionalCard/NutritionalCard.jsx";
 import "./NutritionalInfo.css";
 
 const NutritionalInfo = ({data}) => {
-    console.log("Data : ", data);
     const {calorieCount, proteinCount, carbohydrateCount, lipidCount} = data;
 
     const nutritionalCards = [
