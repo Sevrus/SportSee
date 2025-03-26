@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {Line, LineChart, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import "./AverageSessionChart.css";
 
 const AverageSessionChart = ({data}) => {
     const [hoverIndex, setHoverIndex] = useState(null);
@@ -9,8 +10,8 @@ const AverageSessionChart = ({data}) => {
     const CustomTooltip = ({active, payload}) => {
         if (active && payload && payload.length) {
             return (
-                <div style={{backgroundColor: "#fff", padding: "6px 6px", fontSize: "0.5rem"}}>
-                    <p style={{color: "#000"}}>{payload[0].value} min</p>
+                <div className="tooltip-content">
+                    <p>{payload[0].value} min</p>
                 </div>
             );
         }
@@ -22,25 +23,11 @@ const AverageSessionChart = ({data}) => {
             width={"31%"}
             height={263}
             style={{backgroundColor: "#ff0000", borderRadius: "5px"}}>
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    height: "100%"
-                }}
-            >
-                <div
-                    style={{
-                        fontSize: "0.93rem",
-                        color: "rgba(255, 255, 255, 0.53)",
-                        padding: "29px 0 0 34px",
-                        width: "75%"
-                    }}
-                >
+            <div className="chart-wrapper">
+                <div className="chart-title">
                     Durée moyenne des sessions
                 </div>
-                <div style={{flex: 1, alignSelf: "center"}}>
+                <div className="line-chart-wrapper">
                     <LineChart
                         width={250}
                         height={200}

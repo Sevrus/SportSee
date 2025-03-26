@@ -8,23 +8,7 @@ const BarChartActivity = ({data}) => {
     const CustomTooltip = ({active, payload}) => {
         if (active && payload && payload.length) {
             return (
-                <div
-                    style={{
-                        backgroundColor: "#e60000",
-                        border: "none",
-                        fontSize: "0.43rem",
-                        width: "39px",
-                        height: "63px",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        padding: "12px 0",
-                        marginTop: "-20px",
-                        transform: "translateY(-20px)",
-                        position: "relative",
-                    }}
-                >
+                <div className="custom-tooltip">
                     <p>{payload[0].value}kg</p>
                     <p>{payload[1].value}Kcal</p>
                 </div>
